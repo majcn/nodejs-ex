@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #555;
+  color: #fff;
 }
 
 a {
@@ -34,7 +36,7 @@ a {
   padding: 5px 8px;
   border-radius: 20px;
   cursor: pointer;
-  text-transform: uppercase;
+  text-decoration :none;
 }
   
 .inputForm {
@@ -47,6 +49,10 @@ a {
 .inputForm textarea {
   height: calc(100% - 40px);
   width: calc(100% - 10px);
+  resize: none;
+  border: none;
+  color: #fff;
+  background: none;
 }
 .inputForm input {
   display: block;
@@ -58,4 +64,5 @@ a {
   border: none;
   color: #fff;
   font-weight: bold;
+  text-transform: uppercase;
 }
