@@ -18,7 +18,7 @@ function routerProvider(app) {
 
   router.post('/wish', ensureLoggedIn, function(req, res, next) {
     var col = app.get('db').collection('test');
-    col.update({'email': req.user.emails.join()}, {'$set': {'wish': req.body.wish}}, {'upsert': true});
+    col.update({'email': req.user.emails[0].value}, {'$set': {'wish': req.body.wish}}, {'upsert': true});
     res.redirect('/user');
   });
 
