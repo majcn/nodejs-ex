@@ -19,9 +19,19 @@ describe('Basic routes tests', function() {
 
     })
 
-    it('GET to /pagecount should return 200', function(done){
+    it('GET to /login should return 200', function(done){
         chai.request(reqServer)
-        .get('/pagecount')
+        .get('/login')
+        .end(function(err, res) {
+            res.should.have.status(200);
+            done();
+        })
+
+    })
+
+    it('GET to /logout should return 200', function(done){
+        chai.request(reqServer)
+        .get('/logout')
         .end(function(err, res) {
             res.should.have.status(200);
             done();
