@@ -16,8 +16,8 @@ function getEmail(user) {
 }
 
 function getName(user) {
-  var familyName = req.user.familyName || '';
-  var givenName  = req.user.givenName  || '';
+  var familyName = user.familyName || '';
+  var givenName  = user.givenName  || '';
   return givenName + ' ' + familyName;
 }
 
