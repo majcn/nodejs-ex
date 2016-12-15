@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #555;
+  color: #fff;
 }
 
 a {
@@ -48,6 +50,9 @@ a {
   height: calc(100% - 40px);
   width: calc(100% - 10px);
   resize: none;
+  border: none;
+  color: #fff;
+  background: none;
 }
 .inputForm input {
   display: block;
