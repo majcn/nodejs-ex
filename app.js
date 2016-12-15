@@ -36,7 +36,6 @@ passport.deserializeUser(function(user, done) {
 });
 
 var app = express();
-user.app = app;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
