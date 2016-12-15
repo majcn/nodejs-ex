@@ -15,12 +15,6 @@ function getEmail(user) {
   throw new Error("there is no email for this user")
 }
 
-function getName(user) {
-  var familyName = user.familyName || '';
-  var givenName  = user.givenName  || '';
-  return givenName + ' ' + familyName;
-}
-
 function routerProvider(app) {
   /* GET user profile. */
   router.get('/', ensureLoggedIn, function(req, res, next) {
@@ -32,7 +26,7 @@ function routerProvider(app) {
       }
 
       var user = {
-        'name': getName(req.user),
+        'name': req.user.displayName,
         'picture': req.user.picture,
       };
       res.render('user', { user: user, wish: strWish });
@@ -41,7 +35,7 @@ function routerProvider(app) {
 
   router.post('/wish', ensureLoggedIn, function(req, res, next) {
     var col = app.get('db').collection('wish_holder');
-    col.update({'email': getEmail(req.user)}, {'$set': {'user': req.user, 'wish': req.body.wish, 'picture': req.user.picture, 'name': getName(req.user)}}, {'upsert': true});
+    col.update({'email': getEmail(req.user)}, {'$set': {'wish': req.body.wish, 'picture': req.user.picture, 'name': req.user.displayName}}, {'upsert': true});
     res.redirect('/user');
   });
 
