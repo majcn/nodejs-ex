@@ -9,8 +9,8 @@ var env = {
 };
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.redirect('/user')
+router.get('/', function(req, res) {
+  res.redirect('/login');
 });
 
 router.get('/login',
