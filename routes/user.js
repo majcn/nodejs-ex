@@ -16,6 +16,8 @@ function routerProvider(app) {
     col.update({'email': req.user.email}, {'$set': {'wish': req.body.wish}}, {'upsert': true});
     res.render('user', { user: req.user });
   });
+
+  return router;
 }
 
 module.exports = routerProvider;
