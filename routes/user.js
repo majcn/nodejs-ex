@@ -8,7 +8,12 @@ function routerProvider(app) {
   router.get('/', ensureLoggedIn, function(req, res, next) {
     var col = app.get('db').collection('test');
     var wish = col.findOne({'email': req.user.email})
-    res.render('user', { user: req.user, wish: wish });
+    var strWish = ''
+    if (wish) {
+      strWish = wish.wish
+    }
+    console.log(wish)
+    res.render('user', { user: req.user, wish: strWish });
   });
 
   router.post('/wish', ensureLoggedIn, function(req, res, next) {
