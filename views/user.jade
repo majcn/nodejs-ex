@@ -3,5 +3,7 @@ extends layout
 block content
   img(src="#{user.picture}")
   h2 Welcome #{user.nickname}!
+  form(action='/user/wish',method='post')
+    input(id='wish', type='textarea', value='#{wish}',placeholder='')
   br
   a(href='/logout') Logout
