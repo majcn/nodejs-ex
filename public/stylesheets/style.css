@@ -54,6 +54,9 @@ a {
   color: #fff;
   background: none;
 }
+.inputForm form {
+  height: 100%;
+}
 .inputForm input {
   display: block;
   height: 25px;
