@@ -19,7 +19,7 @@ function routerProvider(app) {
   /* GET user profile. */
   router.get('/', ensureLoggedIn, function(req, res, next) {
     var col = app.get('db').collection('wish_holder');
-    var wish = col.findOne({'email': getEmail(req.user)}, function(err, document) {
+    col.findOne({'email': getEmail(req.user)}, function(err, document) {
       var strWish = '';
       if (document) {
         strWish = document.wish;
