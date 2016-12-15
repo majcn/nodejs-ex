@@ -18,7 +18,7 @@ function getEmail(user) {
 function routerProvider(app) {
   /* GET user profile. */
   router.get('/', ensureLoggedIn, function(req, res, next) {
-    var col = app.get('db').collection('test');
+    var col = app.get('db').collection('wish_holder');
     var wish = col.findOne({'email': getEmail(req.user)})
     var strWish = ''
     if (wish) {
@@ -29,7 +29,7 @@ function routerProvider(app) {
   });
 
   router.post('/wish', ensureLoggedIn, function(req, res, next) {
-    var col = app.get('db').collection('test');
+    var col = app.get('db').collection('wish_holder');
     col.update({'email': getEmail(req.user)}, {'$set': {'wish': req.body.wish}}, {'upsert': true});
     res.redirect('/user');
   });
