@@ -24,11 +24,11 @@ function routerProvider(app) {
     wSend.findOne({'email': getEmail(req.user)}, function(err, document) {
       wHolder.findOne({'_id': document['to']}, function(err2, document2) {
         var user = {
-          'name': document2.secret,
+          'name': document.secret,
           'picture': 'http://images.clipartpanda.com/mechanical-engineer-cartoon-mystery_man_290.jpg' // TODO
         }
 
-        strWish = document.wish
+        strWish = document2.wish
 
         res.render('user', { user: user, wish: strWish });
       });
