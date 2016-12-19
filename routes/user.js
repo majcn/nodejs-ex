@@ -25,7 +25,7 @@ function routerProvider(app) {
       wHolder.findOne({'_id': document['to']}, function(err2, document2) {
         var user = {
           'name': document.secret,
-          'picture': 'http://images.clipartpanda.com/mechanical-engineer-cartoon-mystery_man_290.jpg' // TODO
+          'picture': document.picture
         }
 
         strWish = document2.wish
