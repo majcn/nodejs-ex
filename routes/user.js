@@ -34,6 +34,8 @@ function routerProvider(app) {
       });
     });
   });
+
+  return router;
 }
 
 module.exports = routerProvider;
