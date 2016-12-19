@@ -16,30 +16,24 @@ function getEmail(user) {
 }
 
 function routerProvider(app) {
-  /* GET user profile. */
   router.get('/', ensureLoggedIn, function(req, res, next) {
-    var col = app.get('db').collection('wish_holder');
-    col.findOne({'email': getEmail(req.user)}, function(err, document) {
-      var strWish = '';
-      if (document) {
-        strWish = document.wish;
-      }
+    var wHolder = app.get('db').collection('wish_holder');
+    var wSend = app.get('db').collection('wish_send');
 
-      var user = {
-        'name': req.user.displayName,
-        'picture': req.user.picture,
-      };
-      res.render('user', { user: user, wish: strWish });
+
+    wSend.findOne({'email': getEmail(req.user)}, function(err, document) {
+      wHolder.findOne({'_id': document['to']}, function(err2, document2) {
+        var user = {
+          'name': document2.secret,
+          'picture': 'http://images.clipartpanda.com/mechanical-engineer-cartoon-mystery_man_290.jpg' // TODO
+        }
+
+        strWish = document.wish
+
+        res.render('user', { user: user, wish: strWish });
+      });
     });
   });
-
-  router.post('/wish', ensureLoggedIn, function(req, res, next) {
-    var col = app.get('db').collection('wish_holder');
-    col.update({'email': getEmail(req.user)}, {'$set': {'wish': req.body.wish, 'picture': req.user.picture, 'name': req.user.displayName}}, {'upsert': true});
-    res.redirect('/user');
-  });
-
-  return router;
 }
 
 module.exports = routerProvider;

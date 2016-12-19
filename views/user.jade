@@ -7,5 +7,4 @@ block content
     a(href='/logout').logout Logout
   .inputForm
     form(action='/user/wish',method='post')
-      textarea(id='wish',name='wish') #{wish}
-      input(type='submit',value='Update')
+      textarea(id='wish',name='wish',disabled='disabled') #{wish}
