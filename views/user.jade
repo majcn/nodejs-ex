@@ -3,7 +3,7 @@ extends layout
 block content
   .userBar
     img(src="#{user.picture}")
-    h2 Welcome #{user.name}
+    h2 #{user.name} si želi
     a(href='/logout').logout Logout
   .inputForm
     form(action='/user/wish',method='post')
